@@ -1,6 +1,8 @@
 package com.projectboard.projectboard.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,7 @@ public class ProjectTaskController {
 
 	@PostMapping("")
 	public ResponseEntity<?> addPTToBoard(@RequestBody ProjectTask projectTask) {
-		// ProjectTask newPT = new projectTaskService.saveOrUpdateProjectTask(projectTask);
-		return null; // n<ew ResponseEntity<>(newPT, HttpStatus.CREATED);
+		 ProjectTask newPT = projectTaskService.saveOrUpdateProjectTask(projectTask);
+		return  new ResponseEntity<ProjectTask>(newPT, HttpStatus.CREATED);
 	}
 }
